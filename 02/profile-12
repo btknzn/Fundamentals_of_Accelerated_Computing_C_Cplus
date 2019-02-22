@@ -1,0 +1,26 @@
+==867== NVPROF is profiling process 867, command: ./iteratively-optimized-vector-add
+Success! All values calculated correctly.
+==867== Profiling application: ./iteratively-optimized-vector-add
+==867== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  141.47ms         1  141.47ms  141.47ms  141.47ms  addVectorsInto(float*, float*, float*, int)
+      API calls:   49.10%  160.45ms         3  53.483ms  19.851us  160.38ms  cudaMallocManaged
+                   43.29%  141.47ms         1  141.47ms  141.47ms  141.47ms  cudaDeviceSynchronize
+                    7.40%  24.187ms         3  8.0624ms  7.0512ms  9.1290ms  cudaFree
+                    0.08%  253.26us        94  2.6940us     612ns  68.798us  cuDeviceGetAttribute
+                    0.08%  246.97us         1  246.97us  246.97us  246.97us  cuDeviceTotalMem
+                    0.04%  127.87us         1  127.87us  127.87us  127.87us  cudaLaunch
+                    0.01%  17.979us         1  17.979us  17.979us  17.979us  cuDeviceGetName
+                    0.00%  9.4350us         4  2.3580us     686ns  6.8770us  cudaSetupArgument
+                    0.00%  4.1400us         3  1.3800us     608ns  2.5290us  cuDeviceGetCount
+                    0.00%  3.7690us         1  3.7690us  3.7690us  3.7690us  cudaConfigureCall
+                    0.00%  1.9010us         2     950ns     688ns  1.2130us  cuDeviceGet
+                    0.00%     942ns         1     942ns     942ns     942ns  cudaGetLastError
+
+==867== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    8103  42.883KB  4.0000KB  0.9961MB  339.3359MB  52.59610ms  Host To Device
+     766  171.03KB  4.0000KB  0.9961MB  127.9375MB  11.30790ms  Device To Host
+     406         -         -         -           -  123.9429ms  Gpu page fault groups
+Total CPU Page faults: 1536
