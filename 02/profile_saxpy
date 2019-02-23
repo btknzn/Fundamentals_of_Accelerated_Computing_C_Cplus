@@ -1,0 +1,27 @@
+==784== NVPROF is profiling process 784, command: ./saxpy
+c[0] = 5, c[1] = 5, c[2] = 5, c[3] = 5, c[4] = 5, 
+c[4194299] = 5, c[4194300] = 5, c[4194301] = 5, c[4194302] = 5, c[4194303] = 5, 
+==784== Profiling application: ./saxpy
+==784== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   61.30%  73.435us         3  24.478us  17.247us  30.174us  saxpy(int*, int*, int*, int)
+                   38.70%  46.366us         2  23.183us  19.807us  26.559us  init_array(int*, int, int)
+      API calls:   95.00%  160.77ms         3  53.589ms  29.489us  160.71ms  cudaMallocManaged
+                    2.53%  4.2735ms         4  1.0684ms  316.44us  2.3570ms  cudaMemPrefetchAsync
+                    1.41%  2.3819ms         3  793.96us  648.74us  1.0745ms  cudaFree
+                    0.44%  747.80us         2  373.90us  190.44us  557.35us  cudaDeviceSynchronize
+                    0.17%  284.00us         5  56.800us  7.2180us  147.86us  cudaLaunch
+                    0.15%  254.89us        94  2.7110us     606ns  70.412us  cuDeviceGetAttribute
+                    0.15%  247.83us         1  247.83us  247.83us  247.83us  cuDeviceTotalMem
+                    0.13%  225.97us         1  225.97us  225.97us  225.97us  cudaGetDeviceProperties
+                    0.01%  17.898us         1  17.898us  17.898us  17.898us  cuDeviceGetName
+                    0.01%  14.275us        18     793ns     586ns  1.3400us  cudaSetupArgument
+                    0.00%  5.9680us         5  1.1930us     660ns  1.8390us  cudaConfigureCall
+                    0.00%  3.7100us         3  1.2360us     620ns  1.7650us  cuDeviceGetCount
+                    0.00%  2.0160us         2  1.0080us     700ns  1.3160us  cuDeviceGet
+                    0.00%  1.4810us         1  1.4810us  1.4810us  1.4810us  cudaGetDevice
+
+==784== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       8  2.0000MB  2.0000MB  2.0000MB  16.00000MB  1.332768ms  Device To Host
