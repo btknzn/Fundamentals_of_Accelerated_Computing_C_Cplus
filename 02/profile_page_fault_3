@@ -1,0 +1,23 @@
+==750== NVPROF is profiling process 750, command: ./page-faults
+==750== Profiling application: ./page-faults
+==750== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  55.649ms         1  55.649ms  55.649ms  55.649ms  deviceKernel(int*, int)
+      API calls:   71.51%  159.01ms         1  159.01ms  159.01ms  159.01ms  cudaMallocManaged
+                   25.03%  55.659ms         1  55.659ms  55.659ms  55.659ms  cudaDeviceSynchronize
+                    3.17%  7.0446ms         1  7.0446ms  7.0446ms  7.0446ms  cudaFree
+                    0.11%  253.50us        94  2.6960us     621ns  68.166us  cuDeviceGetAttribute
+                    0.11%  247.65us         1  247.65us  247.65us  247.65us  cuDeviceTotalMem
+                    0.05%  120.57us         1  120.57us  120.57us  120.57us  cudaLaunch
+                    0.01%  16.979us         1  16.979us  16.979us  16.979us  cuDeviceGetName
+                    0.00%  6.7040us         2  3.3520us     735ns  5.9690us  cudaSetupArgument
+                    0.00%  4.2930us         1  4.2930us  4.2930us  4.2930us  cudaConfigureCall
+                    0.00%  3.3050us         3  1.1010us     602ns  1.7890us  cuDeviceGetCount
+                    0.00%  1.7710us         2     885ns     654ns  1.1170us  cuDeviceGet
+
+==750== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    4181  31.349KB  4.0000KB  836.00KB  128.0000MB  22.63459ms  Host To Device
+     208         -         -         -           -  55.55626ms  Gpu page fault groups
+Total CPU Page faults: 384

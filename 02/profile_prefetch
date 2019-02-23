@@ -1,0 +1,31 @@
+OF is profiling process 1100, command: ./prefetch-to-gpu
+Success! All values calculated correctly.
+==1100== Profiling application: ./prefetch-to-gpu
+==1100== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   51.46%  487.29us         1  487.29us  487.29us  487.29us  addVectorsInto(float*, float*, float*, int)
+                   48.54%  459.68us         3  153.23us  150.91us  157.60us  initWith(float, float*, int)
+      API calls:   82.09%  161.52ms         3  53.841ms  18.121us  161.46ms  cudaMallocManaged
+                    9.99%  19.651ms         3  6.5504ms  5.2333ms  9.1325ms  cudaFree
+                    4.85%  9.5478ms         2  4.7739ms  488.23us  9.0595ms  cudaDeviceSynchronize
+                    2.54%  4.9991ms         3  1.6664ms  15.582us  4.8644ms  cudaMemPrefetchAsync
+                    0.15%  293.88us         1  293.88us  293.88us  293.88us  cuDeviceTotalMem
+                    0.13%  256.66us        94  2.7300us     613ns  69.361us  cuDeviceGetAttribute
+                    0.12%  228.57us         1  228.57us  228.57us  228.57us  cudaGetDeviceProperties
+                    0.11%  212.02us         4  53.005us  7.7790us  109.42us  cudaLaunch
+                    0.01%  17.320us         1  17.320us  17.320us  17.320us  cuDeviceGetName
+                    0.01%  10.049us        13     773ns     648ns  1.1080us  cudaSetupArgument
+                    0.00%  4.1580us         4  1.0390us     800ns  1.4870us  cudaConfigureCall
+                    0.00%  3.8820us         3  1.2940us     610ns  2.1360us  cuDeviceGetCount
+                    0.00%  1.7260us         2     863ns     678ns  1.0480us  cuDeviceGet
+                    0.00%  1.6520us         1  1.6520us  1.6520us  1.6520us  cudaGetDevice
+                    0.00%     968ns         1     968ns     968ns     968ns  cudaGetLastError
+
+==1100== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     768  170.67KB  4.0000KB  0.9961MB  128.0000MB  11.37072ms  Device To Host
+   // if i prefetch cpu's memory at the end of code...
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     64  2.0000MB  2.0000MB  2.0000MB  128.0000MB  10.65248ms  Device To Host
+Total CPU Page faults: 384
